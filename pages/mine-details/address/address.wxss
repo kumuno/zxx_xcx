@@ -1,0 +1,225 @@
+page {
+    background: #fafafa;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+    overflow-x: hidden;
+}
+
+.hasinfo {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+}
+
+.hasinfo .iteminfo {
+    padding: 30rpx 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 2rpx 8rpx 18rpx #f1f1f1;
+    margin-bottom: 24rpx;
+    position: relative;
+}
+
+.hasinfo .iteminfo .edit{
+    padding: 30rpx;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hasinfo .iteminfo .edit .img{
+    width:40rpx;
+    height: 40rpx;
+    margin-top: -200rpx;
+}
+
+.hasinfo .iteminfo .selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30rpx 0 30rpx 30rpx;
+}
+
+.hasinfo .iteminfo .selected .img {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo{
+    display: flex;
+    flex-direction: column;
+    padding-left: 30rpx;
+    width: 650rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .addr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .addr .top {
+    font-size: 30rpx;
+    font-weight: 500;
+    margin-bottom: 4rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .addr .text {
+    font-size: 24rpx;
+    color: #777;
+}
+
+.hasinfo .iteminfo .wrapinfo .addr .img-wrap {
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 10rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hasinfo .iteminfo .wrapinfo .name .img-wrap {
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 10rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .name .img {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .name .default {
+    font-size: 22rpx;
+    color: #ee4b31;
+    background: #faedef;
+    text-align: center;
+    padding: 2rpx 10rpx;
+    border-radius: 4rpx;
+}
+
+.hasinfo .iteminfo .wrapinfo .name .text {
+    font-size: 26rpx;
+    margin-right: 10rpx;
+}
+
+.hasinfo .iteminfo .id-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.hasinfo .iteminfo .id-wrap .ids {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 26rpx;
+    color: #5d6777;
+    margin-bottom: 8rpx;
+}
+
+.hasinfo .iteminfo .id-wrap .ids .id-name {
+    margin-right: 20rpx;
+}
+
+.hasinfo .iteminfo .id-wrap .no-ids {
+    font-size: 26rpx;
+    color: #ffbb12;
+}
+
+.hasinfo .add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 2rpx 8rpx 18rpx #f1f1f1;
+    margin-bottom: 24rpx;
+    padding: 30rpx 0;
+}
+
+.hasinfo .add-btn .icon-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 8rpx;
+}
+
+.hasinfo .add-btn .icon-wrap .img {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.hasinfo .add-btn .text {
+    font-size: 28rpx;
+    color: #ffc310;
+}
+
+.noinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300rpx;
+    margin-left: 280rpx;
+}
+
+.noinfo .img {
+    width: 100rpx;
+    height: 100rpx;
+    margin-bottom: 30rpx;
+}
+
+.noinfo .text {
+    font-size: 30rpx;
+    color: #999;
+    text-align: center;
+    margin-bottom: 30rpx;
+}
+
+.noinfo .add-btn {
+    color: #192841;
+    background: linear-gradient(to right, #f8dd66, #fae277);
+    border-radius: 100px;
+    width: 400rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 28rpx;
+    margin: 0 auto;
+}
+
+.btn-wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-wrap .btn {
+    width: 100%;
+    background: linear-gradient(to right, #ee4b31, #ce2309);
+    color: #fff;
+    text-align: center;
+    font-size: 32rpx;
+    height: 110rpx;
+    line-height: 100rpx;
+    border-radius: 15rpx;
+}
+

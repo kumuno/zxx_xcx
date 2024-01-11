@@ -1,0 +1,52 @@
+<!-- <view class='title'> -->
+<!-- <view class='goodsImg'>
+        <image src='/images/icon/bloom.png' mode='aspectFill'></image>
+    </view>
+    <view class='goodsTitle'>廉江红橙</view> -->
+<view class="goods-list" bindtap='toGoodsList'>
+    <view class='list-info-wrap'>
+        <view class="list-title">商品信息</view>
+    </view>
+    <view class="a-goods">
+        <view class="img-box">
+            <view class='image-wrap' wx:for="{{orderGoods}}" wx:key="id" wx:if="{{index<4}}">
+                <image src="{{item.orderItem_goodimage}}" class="goods-image" />
+            </view>
+        </view>
+        <view class='goods-sum'>
+            <view class="text">共{{orderaccount}}件</view>
+            <view class="arrow"></view>
+        </view>
+    </view>
+</view>
+<!-- </view> -->
+<!-- 提示框 -->
+<van-toast id="van-toast" />
+<van-cell-group style='margin-top: 20rpx'>
+    <van-field model:value="{{ actualprice }}元" label="退款金额 :" type="textarea" placeholder='金额' autosize border="{{ false }}" readonly />
+</van-cell-group>
+
+<van-cell-group style='margin-top: 20rpx'>
+    <van-field model:value="{{ result }}" label="退款原因" type="textarea" autosize border="{{ false }}" bind:focus='bindRefund' />
+</van-cell-group>
+
+<van-popup show="{{ show }}" position="bottom " overlay="{{ true }}" bind:close="onClose">
+    <van-picker show-toolbar title="退款原因" columns="{{ columns }}" bind:cancel="onClose" bind:confirm="onConfirm" />{{result}}
+</van-popup>
+
+
+<van-cell-group style='margin-top: 20rpx'>
+    <van-field model:value="{{ message }}" bind:blur="onDescribe" label="退款说明 :" type="textarea" placeholder='选填' autosize border="{{ false }}" />
+</van-cell-group>
+<!-- <view class='upLoading'>
+    <view class='upRefunds'>上传图片</view>
+    <view>
+        <view class='imgItem' bindtap='bindUpImg'>
+            <text class='iconfont icon-iconfontshumajiadian'></text>
+            <view class='refundsText'>上传图片</view>
+            <view class='refundsText'>最多6张</view>
+            <view class='refundsText'>（选填）</view>
+        </view>
+    </view>
+</view> -->
+<view class='submit' bindtap='orderSubmit'>提交</view>

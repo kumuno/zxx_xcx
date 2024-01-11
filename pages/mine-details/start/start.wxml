@@ -1,0 +1,14 @@
+<view class="contain">
+     <view class="go">
+        <button bindtap="go" class="btn">跳过{{count}}s</button> 
+     </view>
+     <image class="bg" src="../../../images/icon/bg1.jpg"></image>
+     <image class="bg1" src="../../../images/icon/bg.png" mode="widthFix"></image>
+     <view class="circle">
+        <view class="text">
+            <view>湛小鲜</view>
+            <view>欢迎您~</view>
+        </view>
+        <view class="wave"></view>
+    </view>
+</view>

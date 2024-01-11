@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "湛小鲜",
+  "usingComponents": {
+    "Swiper":"../../components/theSwiper/theSwiper"
+  }
+}

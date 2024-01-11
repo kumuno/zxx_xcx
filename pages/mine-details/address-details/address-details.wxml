@@ -1,0 +1,66 @@
+<view class="container">
+    <view class='edit-content'>
+        <view class="item">
+            <view class="icon">
+                <image class="img" src="../../../images/icon/avatar.png"></image>
+            </view>
+            <view class="input-wrapper">
+                <input  class='a-input' bindinput="bindinputName" placeholder='请输入您的姓名' value="{{shipaddress.address_contact}}"></input>
+            </view>
+        </view>
+        <view class="item">
+            <view class="icon">
+                <image class="img" src="../../../images/icon/phone-call.png"></image>
+            </view>
+            <view class="input-wrapper">
+                <input cursor-spacing='100' class='a-input' type='number'
+                  bindblur="mobilechange" value="{{shipaddress.address_phone}}"
+                   placeholder='请输入手机号码' maxlength="11"></input>
+            </view>
+        </view>
+        <view class="item">
+            <view class="icon">
+                <image class="img" src="../../../images/icon/local-two.png"></image>
+            </view>
+             <!--地区选择 -->
+            <view class="input-wrapper">
+              <picker mode="region" bindchange="getUserProvince">
+                <input cursor-spacing='100' class='a-input' value="{{shipaddress.regionAddress}}" placeholder="请选择省份、城市、区县"></input>
+              </picker>
+            </view>
+        </view>
+        <view class="item">
+            <view class="icon">
+                <image class="img" src="../../../images/icon/local.png"></image>
+            </view>
+            <view class="input-wrapper">
+                <input class="a-input" bindinput="bindinputAddress" value="{{shipaddress.detailAddress}}" placeholder="请填写详细地址, 如街道、小区或写字楼等" />
+            </view>
+        </view>
+    </view>
+    <view class="default">
+        <view class="text">设为您的默认地址</view>
+        <switch class="switch" checked="{{shipaddress.address_default}}" bindchange="switchChange"></switch>
+    </view>
+    <view class='btn-wrapper' bindtap="saveAddress">
+        <view class="btn active">保存</view>
+    </view>
+    <view class='delete' wx:if="{{revise > 0}}" bindtap='deleteAddress'>
+        <view class='btn'>删除</view>
+    </view>
+   
+    <!-- <view class="location-select"  wx:if="{{openSelectRegion}}">
+        <view class="hd">
+            <view class="location-selected">
+                <view class="item {{item.id == 0 ? 'disabled' : ''}} {{(regionType -1) === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="id">{{item.name}}</view>
+            </view>
+            <view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
+        </view>
+        <view class="bd">
+            <scroll-view scroll-y class="region-list">
+                <view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="id">{{item.name}}</view>
+            </scroll-view>
+        </view>
+    </view> -->
+</view>
+<view class="bg-mask" bindtap="cancelSelectRegion" wx:if="{{openSelectRegion}}"></view>

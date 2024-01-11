@@ -1,0 +1,96 @@
+<view class="container" wx:if="{{loading == 1}}">
+  <image class="bg" src="../../images/icon/bg1.jpg"></image>
+  <view class="search" bindtap="goSearch">
+    <image class="icon" src="/images/icon/search.png"></image>
+    <text class="txt">搜索,发现更多好物</text>
+  </view>
+  <!-- 轮播图 -->
+  <Swiper imgUrls="{{imgUrls}}" />
+
+  <swiper class="catalog-wrap" indicator-dots="{{false}}" indicator-color="#dedede" indicator-active-color="#e00000">
+    <swiper-item class="first">
+      <view class='icon-navi'>
+        <image class='icon-img ' data-current="0" bindtap='currentControl' src="../../images/logo/fruit.png"></image>
+        <view class='icon-text  {{currenttControl == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='currentControl'>水果</view>
+      </view>
+      <view class='icon-navi'>
+        <image class='icon-img' data-current="1" bindtap='currentControl' src="../../images/logo/vegetable.png"></image>
+        <view class='icon-text  {{currenttControl == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='currentControl'>蔬菜</view>
+      </view>
+      <view class='icon-navi'>
+        <image class='icon-img' data-current="2" bindtap='currentControl' src="../../images/logo/meat.png"></image>
+        <view class='icon-text  {{currenttControl == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='currentControl'>肉</view>
+      </view>
+      <view class='icon-navi'>
+        <image class='icon-img' data-current="3" bindtap='currentControl' src="../../images/logo/seafood.png"></image>
+        <view class='icon-text  {{currenttControl == 3 ? "tabBorer" : ""}}' data-current="3" bindtap='currentControl'>海鲜</view>
+      </view>
+      <view class='icon-navi'>
+        <image class='icon-img' data-current="4" bindtap='currentControl' src="../../images/logo/book-one.png"></image>
+        <view class='icon-text  {{currenttControl == 4 ? "tabBorer" : ""}}' data-current="4" bindtap='currentControl'>研学活动</view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- <swiper current="{{currenttControl}}"> 
+            苹果模块
+            <swiper-item>    
+                  <view style=" color: red; margin-top: 10rpx; font-size: 30rpx;">【时间】</view> 
+            </swiper-item>
+            蔬菜模块
+            <swiper-item>    
+                  <view style=" color: black; margin-top: 10rpx; font-size: 30rpx;">【时间】</view> 
+            </swiper-item>
+             肉模块
+             <swiper-item>    
+                  <view style=" color: gold; margin-top: 10rpx; font-size: 30rpx;">【时间】</view> 
+            </swiper-item>
+             海鲜模块
+             <swiper-item>    
+                  <view style=" color: green; margin-top: 10rpx; font-size: 30rpx;">【时间】</view> 
+            </swiper-item>
+             研学模块
+             <swiper-item>    
+                  <view style=" color: pink; margin-top: 10rpx; font-size: 30rpx;">【时间】</view> 
+            </swiper-item>
+    </swiper> -->
+  <swiper current="{{currenttControl}}" bindchange="handleSwiper" style="height: 100%;margin-top: -20rpx;">
+    <view class="goods-container">
+      <view class='topic-container' wx:for="{{floorGoods}}" wx:for-item="item" wx:key="id">
+        <swiper-item>
+          <scroll-view style="height: 100%;width: 100%;" scroll-y>
+            <view class='list-wrap clearfix'>
+              <view class="new-box {{(iindex+1)%2 == 0?'no-margin':''}}" wx:for="{{item}}" wx:for-index="iindex" wx:for-item="iitem" wx:key="id">
+                <navigator wx:if="{{iindex<8}}" hover-class='none' class='navi-url' url="/pages/goods/goods?id={{iitem.commodity_id}}">
+                  <view class="box">
+                    <image src="{{iitem.commodity_img}}" class="image">
+                      <view wx:if="{{iitem.commodity_tag}}" class='new-tag'>{{iitem.commodity_tag}}</view>
+                    </image>
+                    <block wx:if="{{iitem.commodity_state == 0}}">
+                      <view class='sold-img'>
+                        <image class='soldout' src='/images/icon/sold-out.png'></image>
+                      </view>
+                    </block>
+                  </view>
+                  <view class="goods-info {{iitem.commodity_sales== 0?'fast-out-status':''}}">
+                    <view class="goods-title">{{iitem.commodity_name}}</view>
+                    <view class='price-container'>
+                      <view class='l'>
+                        <view class='h'>￥{{iitem.commoditySonAttribute.commodity_price}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </navigator>
+              </view>
+            </view>
+            <view class="no-more-goods" bindtap="goCategory">点击查看更多商品</view>
+          </scroll-view>
+        </swiper-item>
+      </view>
+    </view>
+  </swiper>
+</view>
+<view class="loading" style="height:{{sysHeight}}px" wx:else>
+  <!-- <image class="img" src="/images/icon/loading.gif"></image> -->
+  <view style="font-size: 43rpx; font-weight: 800;" class="text">请点击左上角的三个点->左划动->找到开发调试->点击打开调试即可显示数据</view>
+</view>

@@ -1,0 +1,42 @@
+<view class="info">
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+  <!-- <button class="avatar-wrapper" bindtap="Avatar"> -->
+    <image class="avatar" src="{{tx!=null ? tx : '../../../images/icon/whale.png'}}"></image>
+  </button> 
+<view class="info_more">
+  <text>昵称</text>
+  <input  type="nickname" bindchange="bindinputname" class='a-input'  value="{{name!=null?name:'微信用户'}}"></input>
+ </view>
+<view class="hr"></view>
+<view class="info_more">
+  <text>电话</text>
+   <input class='a-input'  disabled="true" bindblur="mobilechange" value="{{mobile}}"></input>
+ </view>
+ <view class="hr"></view>
+<!-- <view class="info_more">
+   <text>邮箱</text>
+   <input class='a-input' value="{{email}}"></input>
+ </view>
+ <view class="hr"></view>
+ <view class="info_more" >性别
+    <radio-group name="gender" class="gender">
+      <label><radio value="男" checked="{{gender=='男'?'checked':''}}"/>男</label>
+      <label><radio value="女" checked="{{gender=='女'?'checked':''}}"/>女</label>
+    </radio-group>
+ </view>
+<view class="hr"></view>
+<view class="info_more">
+   <text>生日</text>
+   <input class='a-input' value="{{birthday}}"></input>
+ </view>
+ <view class="hr"></view> -->
+ <view class="info_more" bindtap="logout">
+   <text>退出登录</text>
+   <view><image src="/images/icon/double-right.png" class="jiantou"/></view>
+ </view>
+ <view class="hr"></view>
+</view>
+<view class='wrap-btn' bindtap="reserve">
+    <view wx:if="{{status == 0}}" class="btn-wrap disable}}">保存</view>
+    <view wx:else class="btn-wrap active" >保存</view>
+</view>

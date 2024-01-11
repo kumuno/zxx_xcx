@@ -1,0 +1,87 @@
+<!--购物车-->
+<view class='container'>
+  <view class="goodsList" wx:if="{{cartGoods.length > 0}}">
+	<!-- bindtouchstart="touchstart" bindtouchmove="touchmove" -->
+  <!-- 滑动整个大模块 -->
+    <view class="goods {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{cartGoods}}" wx:key="id" bindtouchstart="touchstart" bindtouchmove="touchmove" data-index="{{index}}">
+      <view class="content">
+      <!-- 复选框 -->
+		
+		<view wx:if="{{item.shopcart_amount >0}}" class="checkbox" data-id="{{item.shopcart_id}}"catchtap="checkedItem">
+			<image wx:if="{{item.checked == 1}}" class="checkbox-img" src="/images/icon/check-one1.png"  ></image>
+			<image wx:else class="checkbox-img" src="/images/icon/check-one2.png"></image>
+		</view>
+		
+        <!-- 商品信息 -->
+				<view class="goods-info ">
+					<view class="goods-url">
+            <!-- 商品图片 -->
+						<view class="img-box"  data-goodsid="{{item.commodity_id}}">
+							<image src="{{item.commodity.commodity_img}}" class="img" />
+						</view>
+
+						<view class="text-box">
+							<view class="{{item.commoditySonAttribute.commodity_number >0 && item.commodity.commodity_state == 1?'goods-title':'out-stock-title'}}">
+							{{item.commodity.commodity_name}}
+						</view>
+							
+              <!-- 商品标签 -->
+              				<view class="goods-label">{{item.commoditySonAttribute.attribute_name}}</view>
+              <!-- 商品价格 -->
+							<view class="goods-price">
+								<view class='price-now'>￥{{item.commoditySonAttribute.commodity_price}}</view>
+							</view>
+
+              <!-- 商品添加删除 -->
+			    <view class="selnum"  wx:if="{{ item.commodity.commodity_state == 1}}">
+					<!-- 减号 -->
+					<image src="../../images/icon/reduce-one.png" hidden="{{itemList.quantity<=0}}"
+					data-id="{{item.shopcart_id}}" catchtap="reduce" class="sub" data-operation="{{-1}}">
+					</image>
+								
+					<!-- 数量 -->
+					<text class="number" data-id="{{item.commodity_id}}"
+					data-num="{{item.shopcart_amount}}">{{item.shopcart_amount}}</text>
+					<!-- 加号 -->
+
+					<image src="../../images/icon/add-one1.png" data-id="{{item.shopcart_id}}" 
+					catchtap="increase" class="add" data-operation="{{1}}"></image>
+					</view>
+						<view wx:else class="out-stock">暂时缺货</view>
+					</view>
+					</view>
+				</view>
+      		</view> 
+	  		<view class="delete-btn" data-operation="{{-1}}" data-id="{{item.shopcart_id}}" catchtap="deleteGoods">
+				删除
+			</view> 
+		</view>
+	</view>
+
+<!-- 选择、结算 -->
+  <view class="settle-box" wx:if="{{cartGoods.length > 0}}">
+  	<view class="left-price">
+			<view class="all-selected" >
+				<view class="allselect" catchtap="handallselect">
+					<image class="checkbox" wx:if="{{allSelect}}" src="/images/icon/check-one1.png"></image>
+					<image class="checkbox" wx:else src="/images/icon/check-one2.png"></image>
+				</view>
+				<view class="text" >已选({{cartTotal.checkedGoodsCount}})
+				</view>
+			</view>
+			<view class="total" hidden="">合计：¥{{cartTotal.checkedGoodsAmount}}</view>
+		</view>
+			<view class="to-pay-btn" hidden="" bindtap="checkoutOrder">去结算</view>
+	</view>
+  
+<!-- 购物车无商品时 -->
+  		<view class="empty-car-container {{cartGoods.length == 0?'show':''}}">
+			<view class='empty-car-view'>
+				<image class='empty-car' src='/images/nav/shopping-car.png'></image>
+			</view>
+			<view class='empty-car-txt'>购物车已经空空如也啦！</view>
+			<view class="to-index-btn" bindtap="toIndexPage">
+				要不去逛逛？
+			</view>  
+		</view>
+</view>

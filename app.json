@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/search/search",
+    "pages/goods/goods",
+    "pages/mine-details/login/login",
+    "pages/mine-details/setting/setting",
+    "pages/mine-details/address/address",
+    "pages/mine-details/coupon/coupon",
+    "pages/mine-details/address-details/address-details",
+    "pages/mine-details/start/start",
+    "pages/order/all_order/all_order",
+    "pages/order/order-details/order-details",
+    "pages/order/order_delete/order_delete",
+    "pages/order/to_be_paid/to_be_paid",
+    "pages/order/send_goods/send_goods",
+    "pages/order/for_the_goods/for_the_goods",
+    "pages/pay/settlement/settlement",
+    "pages/category/category",
+    "pages/pay/goods-list/index",
+    "pages/pay/pay_result/pay_result"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#f5a623",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+        {
+            "pagePath": "pages/index/index",
+            "iconPath": "images/icon/home.png",
+            "selectedIconPath": "images/icon/home_select.png",
+            "text": "首页"
+        },
+        {
+          "pagePath": "pages/category/category",
+          "iconPath": "images/icon/all-application.png",
+          "selectedIconPath": "images/icon/all-application1.png",
+          "text": "分类"
+      },
+        {
+            "pagePath": "pages/cart/cart",
+            "iconPath": "images/icon/car.png",
+            "selectedIconPath": "images/icon/car_select.png",
+            "text": "购物车"
+        },
+        {
+            "pagePath": "pages/mine/mine",
+            "iconPath": "images/icon/mine.png",
+            "selectedIconPath": "images/icon/mine_select.png",
+            "text": "我的"
+        }
+    ]
+},
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell-group":"@vant/weapp/cell-group/index",
+    "van-field":"@vant/weapp/field/index",
+    "van-popup":"@vant/weapp/popup/index",
+    "van-picker":"@vant/weapp/picker/index",
+    "van-toast":"@vant/weapp/toast/index"
+  }
+
+}

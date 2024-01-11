@@ -1,0 +1,150 @@
+.btn{
+  background: linear-gradient(to right, #0eb490, #2e9255);
+  box-shadow: 0rpx 10rpx 20rpx #f1f1f1;
+  color: #fff;
+  padding: 15rpx 32rpx;
+  text-align: center;
+  text-decoration: none; 
+  width: 700rpx;
+  height: 100rpx;
+  display:block;
+  margin:60rpx auto;
+  font-size: 28rpx;
+}
+.a-input {
+  font-size: 28rpx;
+  width: 100%;
+  padding-right: 20rpx;
+  color: rgb(167, 164, 164);
+  text-align: right;
+}
+.hr{
+  height: 1rpx;
+  background-color: rgb(202, 202, 202);
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+  margin-top: 10rpx; 
+}
+
+.avatar-wrapper {
+display:flex;
+padding: 0;
+width: 80px !important;
+justify-content: space-between;
+border-radius: 8px;
+margin-top: 110rpx;
+margin-left: 280rpx;
+margin-bottom: 60rpx;
+}
+
+.avatar {
+display: block;
+width: 80px;
+height: 80px;
+}
+
+.info_more1{
+  display:flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  width: 100%;
+  height: 200rpx;
+}
+
+.info_more{
+  display:flex;
+  justify-content: space-between;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+.info_more text{
+  width: 160rpx;
+}
+.gender{
+  width: 200rpx;
+}
+.tx{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  z-index: 99;
+  margin-left: -420rpx;
+}
+
+.name{
+  padding-right: 30rpx;
+  color: rgb(167, 164, 164);
+}
+
+.tx1{
+  margin-top: 160rpx;
+  margin-left: 280rpx;
+}
+
+button::after{
+  border: none;
+}
+.phonetxt{
+  z-index: 2;
+  margin-top: 30rpx;
+}
+.wrap-btn{
+  width: 100%;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+
+.btn-wrap{
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  width: 100%;
+  height: 100rpx;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+.jiantou{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+.active{
+  background: linear-gradient(to right, #0eb490, #2e9255);
+  box-shadow: 0rpx 10rpx 20rpx #f1f1f1;
+  color: #fff;
+}
+
+.disable{
+  background: #bbb;
+  box-shadow: 0rpx 10rpx 20rpx #ccc;
+}
+
+.tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+.tips .q{
+  font-size: 26rpx;
+  color: rgb(196, 54, 54);
+  line-height: 50rpx;
+
+}
+
+.tips .title{
+  color: #666;
+  font-size: 28rpx;
+  font-weight: 500;
+}

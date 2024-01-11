@@ -1,0 +1,248 @@
+page{
+    background:#F4F5F9;
+    width:100%;
+  }
+  .page{
+    width:inherit;
+  }
+  /* 头部 */
+  .tab-change{
+    width:100%;
+    background:#fff;
+    display: flex;
+    border-top:1px solid #F4F5F9;
+  }
+  .tab {
+    width: 50%;
+    text-align: center;
+    padding: 28rpx 0;
+    font-size: 32rpx;
+    color:#000;
+    position: relative;
+  }
+  
+  .tabBorer2 {
+    position:absolute;
+    bottom:0;
+    left:136rpx;
+    width: 100rpx;
+    height: 6rpx;
+    background: #0eb490;
+  }
+   
+  .swiper {
+    width: 100%;
+  }
+   
+  .swiper_con {
+    text-align: center;
+    width: 100%;
+    padding: 80rpx 0;
+  }
+  
+  
+  .swiper_not_con image{
+    width:378rpx;
+    height:240rpx;
+  }
+  .nope{
+    color:#999;
+    font-size: 32rpx;
+    margin-top:30rpx;
+  }
+  /* 可使用优惠券的样式 */
+  .swiper_have_con{
+    padding-top:unset;
+  }
+  
+  .swiper_have_con .wrapper {
+    display: flex;
+    position: relative;
+    width: 710rpx;
+    height: 214rpx;
+    margin: auto;
+    filter: drop-shadow(2px 2px 3px #EAEBEE);
+    margin-top:24rpx;
+  }
+  
+  .swiper_have_con .left {
+    background: #f2eada;
+    background: radial-gradient(circle at top right, transparent 5px, #f2eada 0) top right, radial-gradient(circle at bottom right, transparent 5px, #f2eada 0) bottom right;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    color: white;
+    width: 218rpx;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .swiper_have_con .right {
+    background: #f2eada;
+    background: radial-gradient(circle at top left, transparent 5px, #f2eada 0) top left,radial-gradient(circle at bottom left, transparent 5px, #f2eada 0) bottom left;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    width: 556rpx;
+    color: white;
+    border-radius: 0 5px 5px 0; 
+    box-sizing: border-box;
+    padding-left:32rpx;
+  }
+  .swiper_have_con .right::after{
+    content: "";
+    position: absolute;
+    top: 15rpx;
+    left:200rpx;
+    height: 188rpx;
+    border-left: 2rpx dashed #E0E0E0;
+  }
+  
+  .swiper_have_con .yh-price{
+    color:#db8905;
+    font-size: 46rpx;
+    margin-top:54rpx;
+    margin-bottom:10rpx;
+    font-weight:bold;
+  }
+  .swiper_have_con .small-txt2{
+    font-size: 24rpx;
+    position: none;
+    border:none;
+    font-weight:bold;
+  }
+  .swiper_have_con .describe{
+    font-size: 24rpx;
+    color:#999;
+  }
+  
+  .swiper_have_con .yh-name{
+    font-size: 32rpx;
+    color:#db8905;
+    margin-top:38rpx;
+    margin-bottom:12rpx;
+    text-align: left;
+  }
+  .swiper_have_con .yh-date{
+    font-size: 24rpx;
+    color:#999;
+    display: flex;
+    align-items: center;
+  }
+  .swiper_have_con .yh-use{
+    margin-left:76rpx;
+    color:#0eb490;
+    border:1px solid #0eb490;
+    border-radius: 28rpx;
+    text-align: center;
+    font-size: 24rpx;
+    box-sizing: border-box;
+    padding:6rpx 20rpx;
+  }
+  .swiper_have_con .yh-apply{
+    margin-top:10rpx;
+    font-size:24rpx;
+    color:#999;
+    text-align: left;
+  }
+  /* 已过期优惠券的样式 */
+  .swiper_invalid_con{
+    padding-top: unset;
+  }
+  .swiper_invalid_con .wrapper {
+    display: flex;
+    position: relative;
+    width: 710rpx;
+    height: 214rpx;
+    margin: auto;
+    filter: drop-shadow(2px 2px 3px #EAEBEE);
+    margin-top:24rpx;
+  }
+  
+  .swiper_invalid_con .left {
+    background: #f2eada;
+    background: radial-gradient(circle at top right, transparent 5px, #f2eada 0) top right, radial-gradient(circle at bottom right, transparent 5px, #f2eada 0) bottom right;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    color: white;
+    width: 218rpx;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .swiper_invalid_con .right {
+    background: #f2eada;
+    background: radial-gradient(circle at top left, transparent 5px, #f2eada 0) top left,radial-gradient(circle at bottom left, transparent 5px, #f2eada 0) bottom left;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    width: 556rpx;
+    color: white;
+    border-radius: 0 5px 5px 0; 
+    box-sizing: border-box;
+    padding-left:32rpx;
+    position: relative;
+  }
+  .swiper_invalid_con .right::after{
+    content: "";
+    position: absolute;
+    top: 15rpx;
+    left:-1rpx;
+    height: 188rpx;
+    border-left: 2rpx dashed #E0E0E0;
+  }
+  
+  .swiper_invalid_con .yh-price{
+    color:#db8905;
+    font-size: 44rpx;
+    margin-top:54rpx;
+    margin-bottom:10rpx;
+    font-weight:bold;
+  }
+  .swiper_invalid_con .small-txt2{
+    font-size: 24rpx;
+    position: none;
+    border:none;
+    font-weight:bold;
+  }
+  .swiper_invalid_con .describe{
+    font-size: 24rpx;
+    color:#999;
+  }
+  
+  .swiper_invalid_con .yh-name{
+    font-size: 32rpx;
+    color:#db8905;
+    margin-top:38rpx;
+    margin-bottom:12rpx;
+    text-align: left;
+  }
+  .swiper_invalid_con .yh-date{
+    font-size: 24rpx;
+    color:#999;
+    display: flex;
+    align-items: center;
+  }
+  
+  .swiper_invalid_con .yh-apply{
+    margin-top:10rpx;
+    font-size:24rpx;
+    color:#999;
+    text-align: left;
+  }
+  .swiper_invalid_con .invalid-image{
+    width:130rpx;
+    height:140rpx;
+    position:absolute;
+    right:-6rpx;
+    top:-4rpx;
+  }
+  .swiper_invalid_con .guoqi{
+    margin-left:316rpx;
+    margin-top: -80rpx;
+    color:#999;
+    border:1px solid #999;
+    border-radius: 28rpx;
+    text-align: center;
+    font-size: 24rpx;
+    box-sizing: border-box;
+    padding:6rpx 20rpx;
+    width: 150rpx;
+    height: 50rpx;
+  }
+  

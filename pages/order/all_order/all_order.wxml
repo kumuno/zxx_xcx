@@ -1,0 +1,70 @@
+<view class="container">
+	<view class="tab-nav">
+		<view class="tab {{ showType == 0 ? 'active' : ''}}" bindtap="switchTab" data-index='0'>全部</view>
+		<view class="tab {{ showType == 1 ? 'active' : ''}}" bindtap="switchTab" data-index='1'>
+			<view wx:if="{{status.toPay > 0 }}" class='list-num'>{{status.toPay}}</view>待付款
+		</view>
+		<view class="tab {{ showType == 2 ? 'active' : ''}}" bindtap="switchTab" data-index='2'>
+			<view wx:if="{{status.toDelivery > 0 }}" class='list-num'>{{status.toDelivery}}</view>待发货
+		</view>
+		<view class="tab {{ showType == 3 ? 'active' : ''}}" bindtap="switchTab" data-index='3'>
+			<view wx:if="{{status.toReceive > 0 }}" class='list-num'>{{status.toReceive}}</view>待收货
+		</view>
+		<view class="tab {{ showType == 4 ? 'active' : ''}}" bindtap="switchTab" data-index='4'>
+			<view wx:if="{{status.toDelete > 0 }}" class='list-num'>{{status.toDelete}}</view>已收货
+		</view>
+		<view class="tab {{ showType == 5 ? 'active' : ''}}" bindtap="switchTab" data-index='5'>
+			<view wx:if="{{status.toRefund > 0 }}" class='list-num'>{{status.toRefund}}</view>退款
+		</view>
+	</view>
+	<view class="no-order {{hasOrder == 1? 'show':'' }}" hidden="" wx:if="{{orderList.length <= 0}}">
+		<!-- wx:if="{{orderList.length <= 0}}" -->
+		<image src="../../../images/icon/dislike-two.png" class="no-order-img"></image>
+		<view class="text">您目前没有相关订单哦</view>
+		<view class="to-index-btn" bindtap="toIndexPage">
+			马上去逛逛
+		</view>
+	</view>
+	<view wx:else class="wrap">
+		<!--  待付款  -->
+		<view bindtap='toOrderDetails' class='order-list-wrap' data-orderid="{{item.order_id}}" wx:for="{{orderList}}" wx:key="id">
+			<view class='list-top-wrap'>
+				<view class='time'>{{item.order_newCreateTime}}</view>
+				<view class='status'>
+					<view class="order-status">{{item.order_status}}</view>
+				</view>
+			</view>
+			<view class="goods-list">
+				<view class="a-goods">
+					<view class="img-box">
+						<view class='image-wrap' wx:for="{{item.orderItem}}" wx:key="id" wx:for-item="gitem" wx:if="{{index<4}}">
+							<image src="{{gitem.orderItem_goodimage}}" class="goods-image" />
+						</view>
+					</view>
+					<view class='goods-sum'>
+						<view class="text">共{{item.order_account}}件</view>
+						<view class="arrow"></view>
+					</view>
+				</view>
+			</view>
+			<view class='order-price-wrap'>
+				<view class='order-price'>
+					<view class='price-label'>总价：¥</view>
+					<view class='price-sum'>{{item.order_sumPrice}}</view>
+				</view>
+				<!-- <view class='trans'>(含运费 ¥{{item.freight_price}})</view> -->
+				<view class='trans'>(含运费 ¥0)</view>
+			</view>
+			<!-- 待付款 -->
+			<!-- <view class="order-edit" wx:if="{{item.handleOption.cancel && item.handleOption.pay}}"> -->
+			<view class="order-edit" wx:if="{{!item.order_paymentTime}}">
+				<view catchtap='payOrder' class="edit-btn" data-index="{{index}}" data-orderid="{{item.order_id}}"
+				 data-actualprice="{{item.order_sumPrice}}" >继续支付</view>
+			</view>
+			<view wx:else class="order-edit">
+				<view class="dele-btn">查看详情</view>
+			</view>
+		</view>
+		<view wx:if="{{showTips}}" class="no-more-goods">没有更多商品啦</view>
+	</view>
+</view>

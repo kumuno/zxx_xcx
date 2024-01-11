@@ -1,0 +1,168 @@
+<view class="container {{orderInfo.order_apply_refundTime? '':'show' }}">
+	<view class='status-wrap' bindtap='clearTimer'>
+		<view class='status-text'>
+			<!-- 待付款 -->
+			<image wx:if="{{handleOption.cancel == true}}" class='icon to-pay' src="../../../images/icon/wallet-three.png"></image>
+			<!-- <image wx:elif="{{textCode.close == true}}" class='icon to-close' src="../../../images/icon/error.png"></image> -->
+			<!-- 待发货 -->
+			<image wx:elif="{{handleOption.wait == true}}" class='icon to-delivery' src="../../../images/icon/engineering-vehicle.png"></image>
+			<!-- 待收货 -->
+			<image wx:elif="{{handleOption.confirm == true}}" class='icon to-receive' src="../../../images/icon/commodity.png"></image>
+			<!-- 已收货 -->
+			<image wx:elif="{{handleOption.delete == true}}" class='icon to-success' src="../../../images/icon/success.png"></image>
+			<!-- 待退款 -->
+			<image wx:elif="{{handleOption.waitRefund == true}}" class='icon to-receive' src="../../../images/icon/commodity.png"></image>
+			<!-- 已退款 -->
+			<image wx:elif="{{handleOption.accomplishRefund == true}}" class='icon to-success' src="../../../images/icon/success.png"></image>
+			<view class='text'>{{orderInfo.order_status}}</view>
+		</view>
+		<view wx:if="{{handleOption.confirm == true }}" class='count-wrap'>
+			<view class='time-text'></view>
+			<view class='count-down-time'>
+				<view wx:if="{{c_remainTime.day >0}}" class='day'>{{c_remainTime.day}}天</view>
+				<view wx:if="{{c_remainTime.hour >0}}" class='hour'>{{c_remainTime.hour}}小时</view>
+				<view wx:if="{{c_remainTime.minute >0}}" class='minute'>{{c_remainTime.minute}}分</view>
+			</view>
+			<view wx:if="{{c_remainTime.minute > 0}}" class='time-text'>后自动收货</view>
+			<view wx:else class='time-text'>即将自动收货</view>
+		</view>
+		<view wx:if="{{handleOption.cancel == true}}" class='count-wrap'>
+			<view class='time-text'></view>
+			<view class='count-down-time'>
+				<view class='hour'>{{wxTimerList.orderTimer.wxHour>0? wxTimerList.orderTimer.wxHour : '0'}}小时</view>
+				<view class='minute'>{{wxTimerList.orderTimer.wxMinute>0? wxTimerList.orderTimer.wxMinute : '0'}}分</view>
+				<view class='seconds'>{{wxTimerList.orderTimer.wxSeconds>0? wxTimerList.orderTimer.wxSeconds : '0'}}秒</view>
+			</view>
+			<view class='time-text'>后自动关闭</view>
+		</view>
+	</view>
+	<view class="address-box">
+		<image class="addr-icon" src="../../../images/icon/local.png"></image>
+		<view class="show-address">
+			<view class="name-tel">{{orderInfo.shipAddress.address_contact}} {{orderInfo.shipAddress.address_phone}}</view>
+			<view class="addr-text">{{orderInfo.shipAddress.regionAddress + orderInfo.shipAddress.detailAddress}}</view>
+		</view>
+	</view>
+
+	<!-- <view class="onPosting" wx:if="{{orderInfo.shipping_status && onPosting == 0}}">
+		<image class='loading' src='../../../images/icon/gift.png'></image>
+		<view class='t'>快递信息查询中。。。</view>
+	</view>
+	<view wx:elif="{{orderInfo.shipping_status && onPosting == 1}}" class="express">
+		<view class='express-info-header'>
+			<view class="list-title" wx:if="{{express.traces.length == 0}}">物流信息</view>
+			<view class="title-wrap" wx:else>
+				<view class="no">{{express.shipper_name}}：{{express.logistic_code}}</view>
+				<button class='copy-text' data-text="{{express.logistic_code}}" bindtap='copyText'>复制快递单号</button>
+			</view>
+			<view wx:if="{{express.is_finish == 1}}" class='express-status'>已签收</view>
+			<view wx:elif="{{express.is_finish == 0 && express.traces.length == 0}}" class='express-status'>已发货</view>
+			<view wx:elif="{{express.is_finish == 0 && express.traces.length != 0}}" class='express-status'>运输中</view>
+		</view>
+		<view wx:if="{{express.logistic_code==''}}" class="no-express-info-wrap">
+			<view class='express-info'>暂无物流信息</view>
+		</view>
+		<view wx:elif="{{express.logistic_code != '' &&express.traces.length == 0}}" class="no-express-info-wrap">
+			<view class='express-info'>{{express.shipper_name}}：{{express.logistic_code}}</view>
+			<button class='copy-text' data-text="{{express.logistic_code}}" bindtap='copyText'>复制快递单号</button>
+		</view>
+		<view wx:else class="express-info-wrap" bindtap='toExpressInfo'>
+			<view class="l">
+				<view class='express-info'>{{express.traces[0].status}}</view>
+				<view class='express-time'>{{express.traces[0].time}}</view>
+			</view>
+			<view class="arrow"></view>
+		</view>
+	</view> -->
+
+	<view class="goods-list" bindtap='toGoodsList'>
+		<view class='list-info-wrap'>
+			<view class="list-title">商品信息</view>
+		</view>
+		<view class="a-goods">
+			<view class="img-box">
+				<view class='image-wrap' wx:for="{{orderGoods}}" wx:key="id" wx:if="{{index<4}}">
+					<image src="{{item.orderItem_goodimage}}" class="goods-image" />
+				</view>
+			</view>
+			<view class='goods-sum'>
+				<view class="text">共{{orderInfo.order_account}}件</view>
+				<view class="arrow"></view>
+			</view>
+		</view>
+	</view>
+
+	<view class="price-check-wrap">
+		<view class="row-box">
+			<view class="row-label">商品总价</view>
+			<view class="right-text">¥{{orderInfo.order_sumPrice}}</view>
+		</view>
+		<view class="row-box">
+			<view class="row-label">快递</view>
+			<!-- <view class="right-text">¥{{orderInfo.freight_price}}</view> -->
+			<view class="right-text">¥0</view>
+		</view>
+		<view class="memo-box">
+			<view class="row-label memo-label">备注</view>
+			<view class="right-text memo-input">
+				<view class="memo-disable" wx:if="{{!handleOption.cancel}}">{{orderInfo.order_remark? orderInfo.order_remark:'无'}}</view>
+				<input wx:if="{{handleOption.cancel}}" type="text" class="memo" bindinput="bindinputMemo" value="{{orderInfo.order_remark}}" placeholder="亲爱的买家，这里输入备注" />
+			</view>
+		</view>
+		<view class="bottom-box">
+			<view class="row-label">合计：</view>
+			<view class="right-text price-to-pay">
+				¥{{orderInfo.order_sumPrice}}
+			</view>
+			<!-- <view wx:if="{{orderInfo.change_price != orderInfo.order_sumPrice }}" class='change-price'>(改价)</view> -->
+		</view>
+	</view>
+	<view class="order-info">
+		<view class='row-box-wrap'>
+			<view class="row-box2">
+				<view class="row-label2">订单编号：</view>
+				<view class="right-text2">{{orderInfo.order_id}}</view>
+			</view>
+			<view class="row-box2">
+				<view class="row-label2">创建时间：</view>
+				<view class="right-text2">{{orderInfo.order_newCreateTime}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_way}}" class="row-box2">
+				<view class="row-label2">支付方式：</view>
+				<view class="right-text2">{{orderInfo.order_way}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_paymentTime}}" class="row-box2">
+				<view class="row-label2">付款时间：</view>
+				<view class="right-text2">{{orderInfo.order_paymentTime}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_shipping_time}}" class="row-box2">
+				<view class="row-label2">发货时间：</view>
+				<view class="right-text2">{{orderInfo.order_shipping_time}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_confirm_time}}" class="row-box2">
+				<view class="row-label2">收货时间：</view>
+				<view class="right-text2">{{orderInfo.order_confirm_time}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_apply_refundTime}}" class="row-box2">
+				<view class="row-label2">申退时间：</view>
+				<view class="right-text2">{{orderInfo.order_apply_refundTime}}</view>
+			</view>
+			<view wx:if="{{orderInfo.order_refund_time}}" class="row-box2">
+				<view class="row-label2">退款时间：</view>
+				<view class="right-text2">{{orderInfo.order_refund_time}}</view>
+			</view>
+		</view>
+	</view>
+	<view class="bottom-fixed-box display-between" wx:if="{{handleOption.cancel}}">
+		<view class="to-cancel-btn" data-index="{{orderId}}" bindtap='cancelOrder'>取消订单</view>
+		<button class="to-pay-btn" bindtap='payOrder' data-actualprice="{{orderInfo.order_sumPrice}}">继续支付</button>
+	</view>
+	<view wx:elif="{{!orderInfo.order_apply_refundTime}}" class="bottom-fixed-box display-between">
+		<view bindtap='deleteOrder' class="btn-default" wx:if="{{handleOption.delete}}">删除订单</view>
+		<view bindtap='confirmOrder' class='btn-red' wx:if="{{handleOption.confirm}}">确认收货</view>
+		<view bindtap='toOrderDelete' data-actualprice="{{orderInfo.order_sumPrice}}"
+		data-orderaccount="{{orderInfo.order_account}}"
+		  wx:if="{{handleOption.wait||handleOption.delete}}" class='btn-red'>申请退款</view>
+		<!-- <view class="btn-red" bindtap="reOrderAgain">再来一单</view> -->
+	</view>
+</view>

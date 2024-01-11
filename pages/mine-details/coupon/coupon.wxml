@@ -1,0 +1,53 @@
+<view class="page" style='margin-top: {{height}}px'>
+  <view class="tab-change">
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>
+      可使用
+      <view class=' {{currentData == 0 ? "tabBorer2" : ""}}'></view> 
+    </view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>
+        已过期
+        <view class=' {{currentData == 1 ? "tabBorer2" : ""}}'></view>
+    </view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+    <swiper-item>
+      <view class='swiper_con swiper_have_con'>
+        <view class="wrapper" wx:for="{{coupon}}" wx:index="{{index}}">
+          <view class="left">
+            <view class="yh-price">{{item.price}}<text class="small-txt2">元</text></view>
+            <view class="describe">{{item.describe}}</view>
+          </view>
+          <view class="right">
+            <view class="yh-name">{{item.name}}</view>
+            <view class="yh-date">
+              {{item.date}}
+              <navigator url="/pages/coupon/index" class="yh-use">立即使用</navigator>
+            </view>
+            <view class="yh-apply">{{item.apply}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper_con swiper_invalid_con">
+        <view class="wrapper" wx:for="{{coupon_invalid}}" wx:index="{{index}}">
+          <view class="left">
+            <view class="yh-price">{{item.price}}<text class="small-txt2">元</text></view>
+            <view class="describe">{{item.describe}}</view>
+          </view>
+          <view class="right">
+            <view class="yh-name">{{item.name}}</view>
+            <view class="yh-date">
+              {{item.date}}
+            </view>
+            <view class="yh-apply">{{item.apply}}</view>
+            <view class="guoqi">已过期</view>
+          </view>
+        </view>
+      </view>
+      <view class='swiper_con swiper_not_con'>
+        <view class="nope">暂无优惠券</view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

@@ -1,0 +1,16 @@
+<view class="content">
+   <view class="center">
+      <view class="top">
+         <image src="../../../images/icon/sleaves.png" class="yezi1"></image>
+         <view class="text">湛小鲜欢迎您</view>
+         <image src="../../../images/icon/sleaves.png" class="yezi2"></image>
+      </view>   
+        <view class='header'>
+        <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="userInfo">
+        <button class="bottom" open-type="getPhoneNumber" type='primary' bindgetphonenumber="getPhoneNumber">授权登录</button>
+        </view>
+   </view>
+   <image class="bg" src="../../../images/icon/add_list.png" mode="widthFix"></image>
+</view>

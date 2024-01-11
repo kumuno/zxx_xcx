@@ -1,0 +1,135 @@
+<view class="container">
+    <view class="top11">
+        <view class="center" wx:if="{{hasUserInfo == 0}}" bindtap='goLogin'>
+            <view class="center_top">
+                <view class='no-user'>
+                    <image class='center_img' src="../../images/icon/me1.png"></image>
+                </view>
+                <view class='center_info'>点我登录</view>
+            </view>
+            <view class="center_down">
+                <view class="center_rank" tap="toNone">
+                    <image class="rank_icon" src="../../images/icon/bloom.png"></image>
+                    <text class="rank_text">暂无积分</text>
+                </view>
+                <view class="center_score" tap="toNone">
+                    <navigator class="rank_text">暂无信息</navigator>
+                </view>
+            </view>
+        </view>
+        <view class="center" wx:else bindtap='goProfile'>
+            <view class="center_top">
+
+                <view class="center_img" tap="toBaseInfo">
+                    <image class='center_img' src="{{userInfo.user_image!=null ? userInfo.user_image : '../../images/icon/whale.png'   }}"></image>
+                </view>
+
+                <view class="center_info" wx:if="{{userInfo.user_name!=null}}">
+                    {{userInfo.user_name}}
+                </view>
+                <view class="center_info" wx:else>
+                    微信用户
+                </view>
+
+                <view class="heading">
+                    <view class="arrow"></view>
+                </view>
+            </view>
+            <view class="center_down">
+                <view class="center_rank" bindtap="toNone">
+                    <image class="rank_icon" src="../../images/icon/bloom.png"></image>
+                    <text class="rank_text">我的积分：{{userInfo.user_Integral}}</text>
+                </view>
+                <view class="center_score" bindtap="toMyself">
+                    <view class="rank_text">去查看个人信息</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <image src="/images/icon/active.gif" class="active"></image>
+    <view class="orders-container">
+        <view class='header' data-index='0' bindtap='orderList'>
+            <view class='top-bar'>
+                <view class='left-line'></view>
+                <view class='text'>我的订单</view>
+            </view>
+            <view class='more'>
+                <view class="text">查看全部订单</view>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class='btn-container'>
+            <view class='icon-wrapper' data-index='1' bindtap='orderList'>
+                <view class='order-icon-wrapper'>
+                    <image class='order-icon' src='../../images/icon/wallet-three.png'>
+                    </image>
+                    <view wx:if="{{status.toPay > 0 }}" class='red-point'>{{status.toPay}}</view>
+                </view>
+                <text class='order-txt'>待付款</text>
+            </view>
+            <view class='icon-wrapper' data-index='2' bindtap='orderList'>
+                <view class='order-icon-wrapper'>
+                    <image class='order-icon' src='../../images/icon/commodity.png'>
+                    </image>
+                    <view wx:if="{{status.toDelivery > 0 }}" class='red-point'>{{status.toDelivery}}</view>
+                </view>
+                <text class='order-txt'>待发货</text>
+            </view>
+            <view class='icon-wrapper' data-index='3' bindtap='orderList'>
+                <view class='order-icon-wrapper'>
+                    <image class='order-icon' src='../../images/icon/engineering-vehicle.png'>
+                    </image>
+                    <view wx:if="{{status.toReceive > 0 }}" class='red-point'>{{status.toReceive}}</view>
+                </view>
+                <text class='order-txt'>待收货</text>
+            </view>
+            <view class='icon-wrapper' data-index='4' bindtap='orderList'>
+                <view class='order-icon-wrapper'>
+                    <image class='order-icon' src='../../images/icon/inbox-success.png'>
+                    </image>
+                    <view wx:if="{{status.toDelete > 0 }}" class='red-point'>{{status.toDelete}}</view>
+                </view>
+                <text class='order-txt'>已收货</text>
+            </view>
+            <view class='icon-wrapper' data-index='5' bindtap='orderList'>
+                <view class='order-icon-wrapper'>
+                    <image class='order-icon' src='../../images/icon/shield-add.png'>
+                    </image>
+                    <view wx:if="{{status.toRefund > 0 }}" class='red-point'>{{status.toRefund}}</view>
+                </view>
+                <text class='order-txt'>退款</text>
+            </view>
+        </view>
+    </view>
+    <view class="list-wrapper">
+        <view class="list" bindtap="addressList">
+            <view class="list1">
+                <view class="icon">
+                    <image class="img" src="../../images/icon/local-two.png"></image>
+                </view>
+                <view class="text">地址管理</view>
+            </view>
+            <view class="arrow"></view>
+        </view>
+    </view>
+    <view class="list-wrapper">
+        <view class="list" bindtap="toCoupon">
+            <view class="list1">
+                <view class="icon">
+                    <image class="img" src="../../images/icon/coupon.png"></image>
+                </view>
+                <view class="text">我的优惠劵</view>
+            </view>
+            <view class="arrow"></view>
+        </view>
+        <button id="contact-btton" session-from='{"nickName":"{{userInfo.nickname}}","avatarUrl":"{{userInfo.avatar}}"}' open-type="contact">
+            <view class="list2">
+                <view class="icon">
+                    <image class="img" src="../../images/icon/add-user.png"></image>
+                </view>
+                <view class="text">加入我们</view>
+            </view>
+            <view class="arrow"></view>
+        </button>
+    </view>
+</view>

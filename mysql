@@ -1,0 +1,138 @@
+drop database if exists zxx;
+create database zxx;
+use zxx;
+
+-- 商品
+create table commodity(
+commodity_id varchar(12) primary key,-- 商品id
+commodity_name varchar(30),-- 商品名称
+commodity_introduce varchar(255),-- 商品介绍
+commodity_img varchar(100),-- 商品主图片
+commodity_carousel_Img varchar(500),-- 商品轮播图
+commodity_sales int,-- 商品销售量
+commodity_type varchar(20),-- 商品类型（水果、海鲜）
+commodity_tag varchar(20),-- 商品标签（热销中、促销中……）
+commodity_state int,-- 商品上架状态 0-下架 1-上架
+commodity_flag varchar(20)-- 备用
+);
+
+-- 商品属性
+create table commodityAttribute(
+Attribute_id varchar(12) primary key,-- 商品属性id
+commodity_id varchar(12),-- 商品id
+Attribute_name varchar(30),-- 商品属性名称
+foreign key(commodity_id) references commodity(commodity_id) on delete restrict on update restrict
+);
+
+-- 商品子属性
+create table commoditySonAttribute(
+sonAttribute_id varchar(12) primary key,-- 商品子属性id
+Attribute_id varchar(12),-- 商品属性id
+Attribute_name varchar(30),-- 商品子属性名称
+commodity_price double,-- 商品价格
+commodity_number int,-- 商品库存量
+foreign key(Attribute_id) references commodityAttribute(Attribute_id) on delete restrict on update restrict
+);
+
+
+-- 客户
+create table user(
+user_id varchar(12) primary key,-- 用户id
+user_name varchar(15),-- 用户姓名
+user_password varchar(20),-- 用户密码
+user_image varchar(50),-- 用户头像
+user_phone varchar(15),-- 用户手机号码
+user_createTime date,-- 用户创建时间
+user_Integral int,-- 用户积分
+user_is_deleted int default 0 -- 注销标识字段(0-正常 1-已锁定 请联系客服)
+-- 其他信息通过多表查询进行搜索
+);
+
+-- 商家发货地址
+create table shipAddress(
+address_id varchar(20) primary key,-- 发货地址id
+user_id varchar(20) ,-- 用户id
+regionAddress varchar(20),-- 地区信息（省-市-区）
+detailAddress varchar(100),-- 详细地址信息
+address_contact varchar(10),-- 联系人
+address_phone varchar(13),-- 联系电话
+address_default int,-- 1表示为用户的默认地址，0表示不为用户的默认地址
+foreign key(user_id) references user(user_id) on delete restrict on update restrict
+);
+
+-- 优惠劵
+create table coupons(
+coupons_id varchar(20) primary key,-- 优惠劵id
+user_id varchar(20) ,-- 用户id
+coupons_type varchar(20),-- 优惠劵类型
+coupons_state varchar(20),-- 优惠券状态
+coupons_fund double,-- 优惠券金额
+foreign key(user_id) references user(user_id) on delete restrict on update restrict
+);
+
+-- 内部成员
+create table InternalUser(
+InternalUser_id varchar(12) primary key,-- 内部成员id
+InternalUser_name varchar(20),-- 内部成员姓名
+InternalUser_password varchar(20),-- 内部成员密码
+InternalUser_image varchar(50),-- 内部成员头像
+InternalUser_revenue double,-- 内部成员收入
+address_id varchar(20),-- 内部成员发货地址
+foreign key(address_id) references shipAddress(address_id) on delete restrict on update restrict
+);
+
+-- 雇佣人员
+create table hireUser(
+hireUser_id varchar(12) primary key,-- 雇佣人员id
+hireUser_name varchar(20),-- 雇佣人员姓名
+hireUser_phone varchar(15),-- 雇佣人员手机号码
+hireUser_identitycard varchar(18),-- 雇佣人员身份证
+hireUser_image varchar(50)-- 雇佣人员头像
+);
+
+-- 购物车
+少了购买商品的数量，总数量，总价格
+总数量:commodity_amount
+总价格:commodity_amount-price
+create table shopCart(
+shopcart_id varchar(20) primary key,-- 购物车id
+user_id varchar(20) ,-- 用户id
+commodity_id varchar(12),-- 商品id
+shopcart_amount double,-- 商品数量
+shopcart_sign int,-- 删除标志字段（0-未删除，1-删除）
+shopcart_createTime date,-- 添加商品时的时间
+foreign key(user_id) references user(user_id) on delete restrict on update restrict,
+foreign key(commodity_id) references commodity(commodity_id) on delete restrict on update restrict
+);
+
+-- 订单信息
+create table orderInformation(
+order_id varchar(20) primary key,-- 总订单id
+order_account varchar(50),-- 订单号
+user_id varchar(20),-- 用户id
+order_sumPrice double,-- 订单总价
+order_paymentTime date,-- 支付时间
+order_status varchar(10),-- 订单状态（待发货、已发货、交易完成、已退款、未支付、已支付）
+order_way varchar(20),-- 支付方式（微信，支付宝）
+order_remark  varchar(100),-- 订单备注
+address_id varchar(20),-- 收货地址等信息
+order_sign int,-- 删除标字（0-正常。1-已删除）
+order_createTime date,-- 总订单创建时间
+order_newCreateTime date,-- 总订单最新修改时间
+foreign key(user_id) references user(user_id) on delete restrict on update restrict,
+foreign key(address_id) references shipAddress(address_id) on delete restrict on update restrict
+);
+
+-- 订单商品信息
+create table orderItem(
+orderItem_id varchar(20) primary key,-- 订单商品信息id
+order_id varchar(20),-- 总订单id
+commodity_id varchar(12),-- 商品id
+orderItem_amount double,-- 下单时的商品数量
+orderItem_goodname varchar(20),-- 商品名称
+orderItem_goodimage varchar(50),-- 商品主图
+orderItem_goodprice double,-- 下单时的商品价格
+orderItem_createTime date,-- 下单时间
+foreign key(order_id) references orderInformation(order_id) on delete restrict on update restrict,
+foreign key(commodity_id) references commodity(commodity_id) on delete restrict on update restrict
+);

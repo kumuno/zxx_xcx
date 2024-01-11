@@ -1,0 +1,114 @@
+.contain {
+    width: 100%;
+    height: 100%;
+}
+
+.bg {
+    position: absolute;
+    left: 0rpx;
+    top: 0rpx;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+.bg1 {
+    position: absolute;
+    left: 0rpx;
+    top: 500rpx;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.go {
+    position: absolute;
+    right: 30rpx;
+    top: 150rpx;  
+    z-index: 9;
+}
+
+.go button {
+    font-size: 24rpx;
+    border-radius: 30rpx;
+    color: #65c294;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.781);
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 160rpx;
+    height: 80rpx;
+    margin-top: -100rpx;
+    margin-left: 10rpx;
+}
+.text{
+    position: absolute;
+    top: 30rpx;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 9;
+    text-align: center;
+}
+.text>view:nth-child(1){
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-top: 50rpx;
+  color: #06109c;
+}
+.text>view:nth-child(2){
+    font-size: 24rpx;
+    color: #999;
+}
+.circle {
+  width: 253rpx;
+  height: 253rpx;
+  background-color:  #7591AD;
+  border-radius: 50%;
+  position: relative;
+  margin-top: 390rpx;
+  margin-left: 185rpx;
+  z-index: 9;
+}
+.wave {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(225deg, #8D93F7, #D4D6FC);
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #8D93F7;
+  overflow: hidden;
+  z-index: 0;
+}
+.wave::before, .wave::after {
+  position: absolute;
+  content: "";
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wave::before {
+  border-radius: 30%;
+  background: linear-gradient(225deg, #8D93F7, #D4D6FC);
+  animation: animate 5s linear infinite;
+}
+.wave::after {
+  border-radius: 40%;
+  background: #fff;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+      top:-50rpx;
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100%{
+      top:-50rpx;
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

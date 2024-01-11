@@ -1,0 +1,163 @@
+<view class="page" wx:if="{{loading == 1}}">
+	<!-- 搜索条 -->
+	<view class="search">
+		<navigator url="/pages/search/search" class="input">
+			<image class="icon" src="/images/icon/search.png"></image>
+			<text class="txt">搜索商品</text>
+		</navigator>
+	</view>
+	<view class="body">
+		<!-- 左侧滚动栏 -->
+		<view class='left'>
+			<!--高度 style='height: {{winHeight}}px' -->
+			<scroll-view scroll-y scroll-with-animation scroll-left="{{scrollLength}}" class='scrollY'>
+				<view class='all clear'>
+					<block wx:key="commodity" wx:for="{{commodity}}">
+						<view bindtap='jumpIndex' data-menuindex='{{index}}' data-id="{{item.commodity_flag}}">
+							<view class="text-style {{indexId==index?' activeView':''}}">
+								<text class="{{indexId==index?'active1':''}}">{{item.commodity_type}}</text>
+							</view>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+		</view>
+		<!--高度 height: {{winHeight}}rpx; -->
+		<view class="right" style='width:calc(100% - 200rpx);'>
+			<scroll-view scroll-y scroll-with-animation scroll-left="{{scrollLength}}" bindscroll="scrollToLeft" scroll-into-view="{{toTitle}}" class='scrollRight' style='height: 100%'>
+				<block wx:key="commodity" wx:for="{{commodity}}">
+					<view id="view-{{item.commodity_flag}}" class="caidan">
+						<view class="title" id="title-{{item.commodity_flag}}">------------{{item.commodity_type}}类------------</view>
+						<view class="orders" wx:for="{{commodityList}}"  wx:if="{{item.commodity_flag==itemList.commodity_flag}}"  wx:key="itemList.commodity_flag" wx:for-item="itemList">
+							<view class="orderList">
+								<navigator url="/pages/goods/goods?id={{itemList.commodity_id}}" class="nav">
+									<image src="{{itemList.commodity_img}}" bindtap="toDetail" data-id="{{itemList.commodity_id}}" data-id="{{itemList.commodity_type}}" class="listimg"></image>
+								</navigator>
+								<view class="listName1">
+									<navigator url="/pages/goods/goods?id={{itemList.commodity_id}}">
+										<view class="listName2">{{itemList.commodity_name}}</view>
+										<view class="listDescription">{{itemList.commodity_introduce}}</view>
+										<text class="listPrice1">￥{{itemList.commoditySonAttribute.commodity_price}}起</text>
+											<!-- <view class="section-navnew">
+												<view class="newtxt">查看商品详情</view>
+												<view class="arrow">
+													<image class="newimg-left" src="/images/new/right.png"></image>
+												</view>
+											</view> -->
+									</navigator>
+									<!-- <view class="listPrice">
+										<navigator url="/pages/goods/goods?id={{itemList.commodity_id}}">
+											
+										</navigator> -->
+
+										<!-- 加号 -->
+										<!-- <image src="../../images/icon/add-one1.png" data-id="{{itemList.commodity_id}}" bindtap="addCart" class="add1"></image> -->
+										<!-- 数量 -->
+										<!-- <text class="value" hidden="{{itemList.quantity<=0}}" data-id="{{itemList.commodity_id}}" data-num="{{itemList.quantity}}">{{itemList.quantity}}</text> -->
+										<!-- 减号 -->
+										<!-- <image src="../../images/icon/reduce-one.png" hidden="{{itemList.quantity<=0}}" data-id="{{itemList.commodity_id}}" bindtap="delCart" class="reduce">
+										</image> -->
+									<!-- </view> -->
+								</view>
+							</view>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+	</view>
+
+	<!-- 规格选择区 -->
+	<!-- <view class="attr-pop-box" hidden="{{!openAttr}}">
+		<view class="attr-pop" catchtap="handleTap">
+			<view class="close" catchtap="closeAttr">
+				<image class="icon" src="/images/icon/icon-close.png"></image>
+			</view>
+			<view class="img-info">
+				<view class="img-wrap">
+					<image class="img" src="{{commodity.commodity_img}}"></image>
+				</view>
+				<view class="info">
+					<view class='price-range' wx:if="{{priceChecked == false}}"> -->
+	<!-- todo 原价不等于0的时候要补充 -->
+	<!-- <view class='retail-price'>
+							<view class='p-title'>¥</view>
+							<view class='g-price'>{{}}</view>
+						</view>
+					</view>
+					<view class='price-range' wx:elif="{{priceChecked == true}}">
+						<view class='retail-price'>
+							<view class='p-title'>¥</view>
+							<view class='g-price'>{{good_price}}元</view>
+						</view>
+					</view>
+					<view class="a" wx:if="{{commoditySonAttribute.length>0}}">{{good_name}}</view>
+				</view>
+			</view>
+			<view class="spec-con">
+				<view class='spec-item'>
+					<view class="values">
+						<view class="value {{good_index == item.sonAttribute_id ? 'selected' : ''}} {{item.commodity_number <=0?'out-stock':''}}" bindtap="clickSkuValue" wx:for="{{commoditySonAttribute}}" data-id="{{item.sonAttribute_id}}" data-name="{{item.attribute_name}}" data-price="{{item.commodity_price}}" data-number="{{item.commodity_number}}">
+							{{item.attribute_name}}
+						</view>
+					</view>
+				</view>
+				<view class="line"></view>
+				<view class="number-item">
+					<view class="name1">库存量：</view>
+					<view class='stock-num' wx:if="{{good_number <= 0}}">无货</view>
+					<view class='stock-num' wx:else>{{good_number}}</view>
+					<view class="selnum">
+						<button class="cut" bindtap="cutNumber">-</button>
+						<input value="{{number}}" class="number" type="number" cursor-spacing="100" bindblur="inputNumber" />
+						<button class="add" bindtap="addNumber" disabled='{{disabled}}'>+</button>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view> -->
+	<!-- <view class="shop_cartBox" bindtap="cascadeToggle">
+		<image class="shopCart_img" src="../../images/icon/shopping-cart-one.png"></image>
+	</view> -->
+	<!-- <view class="bottom_box">
+		<view class="shop_cartBox" bindtap="cascadeToggle">
+			<image class="shopCart_img" src="../../images/icon/shopping-cart-one.png"></image>
+		</view> -->
+	<!-- <view class="all_money">总计：{{totalPrice}}元，{{totalNum}}件</view>
+		<view class="choose_ok color-block" bindtap="gotoOrder">立即支付</view> -->
+	<!-- </view> -->
+	<!--购物车弹窗  -->
+	<!-- <view hidden="{{maskFlag}}" class="modal-mask" bindtap="cascadeToggle"></view>
+	<view animation="{{animationData}}" class="cart_popup"> -->
+	<!-- <span class="shopcart_close" bindtap="cascadeToggle">返回</span> -->
+	<!-- <view class="shopcart_title">您当前的选择
+			<span class="shopcart_deleteAll" bindtap="cleanList">清空</span>
+		</view>
+		<scroll-view scroll-y class="scrolly1">
+			<block wx:for="{{cartList}}" wx:key="cartList">
+				<view class="cart_cells" wx:if="{{item.quantity > 0}}">
+					<view class="cells_name" data-index="{{index}}">{{item.commodity_name}}</view>
+					<view class="cells_price" data-index="{{index}}">￥{{item.commodity_price}}</view>
+					<view class="price-box">
+						<!-- 减号 -->
+	<!-- <image src="../../images/icon/reduce-one.png" hidden="{{item.quantity<=0}}" data-id="{{item.commodity_id}}" bindtap="delCart" class="cartreduce"></image> -->
+	<!-- 数量 -->
+	<!-- <text class="value1" hidden="{{item.quantity<=0}}" data-id="{{item.commodity_id}}" data-num="{{item.quantity}}">{{item.quantity}}</text> -->
+	<!-- 加号 -->
+	<!-- <image src="../../images/icon/add-one1.png" data-id="{{item.commodity_id}}" bindtap="addCart" class="cartadd"></image>
+					</view>
+					<icon class="shopcart_delete" type="clear" size="18" data-index="{{index}}" data-id="{{item.commodity_id}}" bindtap="deleteOne" />
+				</view>
+			</block>
+			<view class="total">
+				<view class="all_money">总计：{{totalPrice}}元，{{totalNum}}件</view>
+				<view class="choose_ok color-block" bindtap="gotoOrder">添加到购物车</view>
+			</view>
+
+		</scroll-view>
+	</view> -->
+</view>
+<view class="loading" wx:else>
+	<!-- <image class="img" src="/images/icon/loading.gif"></image> -->
+	<view style="font-size: 43rpx; font-weight: 800;" class="text">请点击左上角的三个点->左划动->找到开发调试->点击打开调试即可显示数据</view>
+</view>

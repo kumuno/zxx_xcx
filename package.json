@@ -1,0 +1,18 @@
+{
+  "name": "zxx_xcx-master",
+  "version": "1.0.0",
+  "description": "order:订单 mine:我的 serach:搜索 index:主页 cart:购物车 goods:商品 mine-details:\"我的\"里面的选项",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.10.11"
+  }
+}

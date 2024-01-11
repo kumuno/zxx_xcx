@@ -1,0 +1,154 @@
+/* pages/User/pages/applyRefund/applyRefund.wxss */
+/* @import "../../../../wxss/iconfont.wxss";
+@import "../../../../wxss/base.wxss";
+@import "../../../../wxss/baseNavigationBar.wxss"; */
+page {
+  background: #f3f3f3;
+}
+
+.title {
+  display: flex;
+  padding: 20rpx;
+  background: white;
+  margin-top: 10rpx;
+}
+
+.goods-list {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 18rpx;
+}
+
+.list-info-wrap {
+  padding: 24rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-title {
+  font-size: 29rpx;
+  color: #666;
+}
+
+.status {
+  color: #0eb490;
+  font-size: 28rpx;
+}
+
+.a-goods {
+  display: flex;
+  padding: 24rpx;
+  background-color: #fff;
+  background-size: 16rpx auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img-box {
+  height: 120rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.goods-image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 18rpx;
+  background-color: #fafafa;
+}
+
+.goods-sum {
+  line-height: 100rpx;
+  height: 100rpx;
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.goods-sum .text {
+  margin-right: 20rpx;
+}
+
+.goods-sum .arrow {
+  width: 10rpx;
+  height: 10rpx;
+  border-top: 4rpx solid #ccc;
+  border-right: 4rpx solid #ccc;
+  transform: rotate(45deg);
+}
+
+.goodsImg {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+}
+
+.goodsImg image {
+  width: 100%;
+  height: 100%;
+}
+
+.goodsTitle {
+  flex-shrink: 0;
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+}
+
+.van-cell {
+  margin-top: 20rpx;
+}
+
+.RefundList {
+  background: white;
+  padding: 0 20rpx;
+}
+
+.RefundItem {
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #f3f3f3;
+}
+
+.upLoading {
+  margin-top: 20rpx;
+  background: white;
+  padding: 20rpx 30rpx;
+}
+
+.imgItem {
+  width: 180rpx;
+  height: 190rpx;
+  margin: 10rpx 10rpx 10rpx 0;
+  border: 1px dashed #999
+}
+
+.icon-iconfontshumajiadian {
+  display: block;
+  font-size: 48rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 8rpx;
+}
+
+.refundsText {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  line-height: 1.6;
+  margin-top: 20rpx;
+}
+
+.submit {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(to right, #0eb490, #2e9255);
+  height: 80rpx;
+  line-height: 80rpx;
+  color: white;
+  font-size: 32rpx;
+}
