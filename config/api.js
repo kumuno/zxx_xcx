@@ -1,8 +1,8 @@
 // const ApiRootUrl = 'http://localhost:8360/api/';
 // const ApiRootUrl = 'http://192.168.0.108:8360/api/';
 const ApiRootUrl = 'https://www.guxiaoling.com:8466/api/';
-// const ApiCommonUrl = 'http://cd.free.idcfengye.com/';
-const ApiCommonUrl = 'http://119.29.13.56:28079/';
+const ApiCommonUrl = 'http://winber.free.idcfengye.com/';
+// const ApiCommonUrl = 'http://119.29.13.56:28079/';
 module.exports = {
   // 登录
   WXlogin: ApiCommonUrl + 'UserController/login', //微信登录
