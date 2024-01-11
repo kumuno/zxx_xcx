@@ -136,3 +136,5 @@ orderItem_createTime date,-- 下单时间
 foreign key(order_id) references orderInformation(order_id) on delete restrict on update restrict,
 foreign key(commodity_id) references commodity(commodity_id) on delete restrict on update restrict
 );
+
+
